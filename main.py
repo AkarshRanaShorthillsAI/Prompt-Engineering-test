@@ -79,7 +79,7 @@ def highest_returns_30d(df):
     return pd.DataFrame()
 
 def plot_gainers_losers(gainers, losers):
-    """Plots a bar chart of the top 5 gainers and losers of the day."""
+    """Plots a bar chart of the top 5 gainers and losers of the day and saves it as an image."""
     plt.figure(figsize=(10, 5))
     plt.bar(gainers["symbol"], gainers["pChange"], color="green", label="Top 5 Gainers")
     plt.bar(losers["symbol"], losers["pChange"], color="red", label="Top 5 Losers")
@@ -88,7 +88,9 @@ def plot_gainers_losers(gainers, losers):
     plt.title("Top 5 Gainers and Losers of the Day")
     plt.legend()
     plt.xticks(rotation=45)
+    plt.savefig("gainers_losers_chart.png")  # Save the chart as an image
     plt.show()
+
 
 if __name__ == "__main__":
     nse_data = fetch_nse_data()
